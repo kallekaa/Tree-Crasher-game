@@ -1,0 +1,266 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow: hidden;
+  background: #000;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+#game-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+#game-container canvas {
+  display: block;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Menu Screen */
+.screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.85);
+  color: #fff;
+}
+
+.title {
+  font-size: 5rem;
+  font-weight: 900;
+  color: #ff6b00;
+  text-shadow: 0 0 20px rgba(255, 107, 0, 0.5), 0 4px 0 #aa4400;
+  letter-spacing: 4px;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  font-size: 1.4rem;
+  color: #aaa;
+  margin-bottom: 2rem;
+}
+
+.controls-info {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1.2rem 2rem;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+.controls-info p {
+  font-size: 1rem;
+  margin: 0.3rem 0;
+  color: #ccc;
+}
+
+.controls-info strong {
+  color: #ff6b00;
+  min-width: 140px;
+  display: inline-block;
+}
+
+.start-prompt {
+  font-size: 1.5rem;
+  color: #ff6b00;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* HUD */
+.hud {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 50;
+  pointer-events: none;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.hud-speed {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 2px solid rgba(255, 107, 0, 0.4);
+}
+
+#speed-value {
+  font-size: 3rem;
+  font-weight: 900;
+  color: #fff;
+}
+
+.unit {
+  font-size: 1rem;
+  color: #aaa;
+  margin-left: 4px;
+}
+
+.hud-score {
+  text-align: center;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 10px 24px;
+  border-radius: 10px;
+  border: 2px solid rgba(255, 107, 0, 0.4);
+}
+
+.score-label {
+  display: block;
+  font-size: 0.8rem;
+  color: #aaa;
+  letter-spacing: 2px;
+}
+
+#score-value {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #ff6b00;
+}
+
+.combo {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #ff3333;
+  animation: comboPulse 0.3s ease-out;
+}
+
+@keyframes comboPulse {
+  0% { transform: scale(1.5); }
+  100% { transform: scale(1); }
+}
+
+.hud-trees {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 2px solid rgba(255, 107, 0, 0.4);
+  text-align: center;
+}
+
+#trees-value {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #4caf50;
+}
+
+.trees-label {
+  display: block;
+  font-size: 0.8rem;
+  color: #aaa;
+  letter-spacing: 2px;
+}
+
+.hud-progress {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #ff6b00, #ffaa00);
+  border-radius: 4px;
+  transition: width 0.2s;
+}
+
+/* Results Screen */
+.results-title {
+  font-size: 4rem;
+  font-weight: 900;
+  color: #4caf50;
+  text-shadow: 0 0 20px rgba(76, 175, 80, 0.5);
+  margin-bottom: 2rem;
+}
+
+.results-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.stat {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1.2rem 2rem;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.stat-label {
+  display: block;
+  font-size: 0.8rem;
+  color: #aaa;
+  letter-spacing: 2px;
+  margin-bottom: 0.5rem;
+}
+
+.stat-value {
+  display: block;
+  font-size: 2rem;
+  font-weight: 900;
+  color: #ff6b00;
+}
+
+/* Score popups */
+#score-popups {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 60;
+}
+
+.score-popup {
+  position: absolute;
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #ffaa00;
+  text-shadow: 0 0 10px rgba(255, 170, 0, 0.6), 2px 2px 0 rgba(0,0,0,0.5);
+  animation: popupFloat 1s ease-out forwards;
+  pointer-events: none;
+}
+
+.score-popup.combo-popup {
+  color: #ff3333;
+  font-size: 2.2rem;
+}
+
+@keyframes popupFloat {
+  0% { transform: translateY(0) scale(1.3); opacity: 1; }
+  100% { transform: translateY(-80px) scale(0.8); opacity: 0; }
+}

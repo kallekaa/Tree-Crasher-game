@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tree Crasher!</title>
+  <link rel="stylesheet" href="/styles/hud.css">
+</head>
+<body>
+  <!-- Menu Screen -->
+  <div id="menu-screen" class="screen">
+    <h1 class="title">TREE CRASHER!</h1>
+    <p class="subtitle">Smash every tree in sight!</p>
+    <div class="controls-info">
+      <p><strong>W / Up Arrow</strong> - Accelerate</p>
+      <p><strong>S / Down Arrow</strong> - Brake</p>
+      <p><strong>A / Left Arrow</strong> - Steer Left</p>
+      <p><strong>D / Right Arrow</strong> - Steer Right</p>
+    </div>
+    <p class="start-prompt">Press ENTER to start</p>
+  </div>
+
+  <!-- HUD -->
+  <div id="hud" class="hud hidden">
+    <div class="hud-speed">
+      <span id="speed-value">0</span>
+      <span class="unit">km/h</span>
+    </div>
+    <div class="hud-score">
+      <span class="score-label">SCORE</span>
+      <span id="score-value">0</span>
+      <div id="combo" class="combo hidden">x<span id="combo-value">2</span> COMBO!</div>
+    </div>
+    <div class="hud-trees">
+      <span id="trees-value">0</span>
+      <span class="trees-label">TREES</span>
+    </div>
+    <div class="hud-progress">
+      <div id="progress-bar" class="progress-fill"></div>
+    </div>
+  </div>
+
+  <!-- Results Screen -->
+  <div id="results-screen" class="screen hidden">
+    <h1 class="results-title">FINISH!</h1>
+    <div class="results-stats">
+      <div class="stat">
+        <span class="stat-label">FINAL SCORE</span>
+        <span id="final-score" class="stat-value">0</span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">TREES DESTROYED</span>
+        <span id="final-trees" class="stat-value">0</span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">TOP SPEED</span>
+        <span id="final-speed" class="stat-value">0 km/h</span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">MAX COMBO</span>
+        <span id="final-combo" class="stat-value">x1</span>
+      </div>
+    </div>
+    <p class="start-prompt">Press ENTER to play again</p>
+  </div>
+
+  <!-- Score popups container -->
+  <div id="score-popups"></div>
+
+  <!-- Game canvas -->
+  <div id="game-container"></div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
